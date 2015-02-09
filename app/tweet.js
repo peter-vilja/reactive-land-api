@@ -31,17 +31,15 @@ Tweet.prototype.stream = function () {
   var url = 'https://stream.twitter.com/1.1/statuses/sample.json';
   var request = this.oa.post(url, accessTokenKey, accessTokenSecret, {});
 
-  request.on('response', response => response.on('data',
-    (chunk) => {
-      var index;
-      buffer += chunk.toString();
-      while ((index = buffer.indexOf('\r\n')) > -1) {
-        var obj = buffer.slice(0, index);
-        buffer = buffer.slice(index + 2);
-        if (obj.length > 0) readable.push(obj);
-      }
+  request.on('response', response => response.on('data', chunk => {
+    var index;
+    buffer += chunk.toString();
+    while ((index = buffer.indexOf('\r\n')) > -1) {
+      var obj = buffer.slice(0, index);
+      buffer = buffer.slice(index + 2);
+      if (obj.length > 0) readable.push(obj);
     }
-  ));
+  }));
   request.end();
   return readable;
 };

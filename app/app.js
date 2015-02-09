@@ -10,9 +10,9 @@ http.createServer((req, res) => {
       'Connection' : 'keep-alive'
     });
 
-    // var tweet = Tweet();
-    // var stream = tweet.stream();
-    // stream.on('data', (data) => res.write(`data: ${data}\n\n`));
-    setInterval(() => res.write(`data: test\n\n`), 1000);
+    var tweet = Tweet();
+    var stream = tweet.stream();
+    stream.on('data', (data) => res.write(`data: ${data}\n\n`));
+    // setInterval(() => res.write(`data: test\n\n`), 1000);
   }
 }).listen(4000);
