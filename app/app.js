@@ -2,6 +2,9 @@
 var http = require('http');
 var Tweet = require('./tweet');
 
+var tweet = Tweet();
+var stream = tweet.stream();
+
 http.createServer((req, res) => {
   if (req.url == '/tweets') {
     res.writeHead(200, {
@@ -10,8 +13,6 @@ http.createServer((req, res) => {
       'Connection' : 'keep-alive'
     });
 
-    var tweet = Tweet();
-    var stream = tweet.stream();
     stream.on('data', (data) => res.write(`data: ${data}\n\n`));
     // setInterval(() => res.write(`data: test\n\n`), 1000);
   }
