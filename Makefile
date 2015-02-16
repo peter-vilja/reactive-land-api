@@ -5,7 +5,7 @@ clean:
 
 scripts:
 	cd app; \
-	6to5 *.js --out-dir ../dist
+	../node_modules/babel/bin/babel/index.js *.js --out-dir ../dist
 
 copy:
 	cp -r ./node_modules ./dist/node_modules

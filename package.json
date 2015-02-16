@@ -8,12 +8,11 @@
     "email": "peter.vilja@gmail.com"
   },
   "license": "MIT",
-  "scripts": {
-    "preinstall": "npm list 6to5 -g || npm install 6to5 -g"
-  },
   "dependencies": {
     "data.future": "^2.3.0",
     "oauth": "^0.9.12"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel": "^4.0.1"
+  }
 }
