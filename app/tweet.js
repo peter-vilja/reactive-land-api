@@ -29,7 +29,7 @@ module.exports = Tweet;
 Tweet.prototype.stream = function () {
   var readable = new stream.Readable({objectMode: true});
   readable._read = () => {};
-  var url = 'https://stream.twitter.com/1.1/statuses/sample.json';
+  var url = 'https://stream.twitter.com/1.1/statuses/sample.json?include_entities=true';
   var request = this.oa.post(url, accessTokenKey, accessTokenSecret, {});
 
   request.on('response', response => response.on('data', chunk => {
